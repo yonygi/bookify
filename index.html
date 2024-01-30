@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, inital-scale=1.0">
+    <title>bookify</title>
+
+    <!-- css/js links -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/fullpage.js/dist/fullpage.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js" type="text/javascript"
+        charset="utf8"></script>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">bookify.</a>
+
+        <nav class="navbar">
+            <a href="#home-page">Home</a>
+            <a href="#library-page">Library</a>
+            <a href="#stats-page">Stats</a>
+            <a href="#inventory-page">Inventory</a>
+            <a href="#newsletter-page">Newsletter</a>
+        </nav>
+    </header>
+
+    <div id="fullpage">
+        <div class="section" id="home" data-anchor="home-page">
+            <section class="home">
+                <div class="image">
+                    <img src="imgs/shelf.png" alt="">
+                </div>
+
+                <div class="content">
+                    <span>Unlock Worlds,</span>
+                    <h3>One Page at a Time</h3>
+                    <a href="#library" class="btn">View Library</a>
+                </div>
+            </section>
+        </div>
+
+        <div class="section" id="library" data-anchor="library-page">
+            <div id="cardCarousel" class="carousel slide card-container mb-3" data-bs-ride="carousel">
+                <h1>Library</h1>
+                <form action="" class="search-box-container">
+                    <input type="search" name="" placeholder="Search..." id="search-box" oninput="filterBooks()">
+                </form>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="container mb-3">
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 justify-content-center">
+                                <div class="col">
+                                    <div class="card h-100 m-3" id="item1"
+                                        data-description="Description for Book of Night"
+                                        onclick="showBookDescription('Book of Night')">
+                                        <img src="imgs/book of night.jpg" class="card-img-top" alt="Book of Night">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Book of Night</h5>
+                                            <div class="author">Holly Black</div>
+                                            <button id="item1-reserve-btn" onclick="reserveBook('item1',event)"
+                                                class="btn">Reserve</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-100 m-3" id="item2"
+                                        data-description="Description for The Comfort Book"
+                                        onclick="showBookDescription('The Comfort Book')">
+                                        <img src="imgs/comfort book.jpg" class="card-img-top" alt="The Comfort Book">
+                                        <div class="card-body">
+                                            <h5 class="card-title">The Comfort Book</h5>
+                                            <div class="author">Aldous Huxley</div>
+                                            <button id="item2-reserve-btn" onclick="reserveBook('item2',event)"
+                                                class="btn">Reserve</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-100 m-3" id="item3"
+                                        data-description="Description for Icebreakers"
+                                        onclick="showBookDescription('Icebreakers')">
+                                        <img src="imgs/icebreakers.jpg" class="card-img-top" alt="Icebreakers">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Icebreakers</h5>
+                                            <div class="author">Matt Haig</div>
+                                            <button id="item3-reserve-btn" onclick="reserveBook('item3',event)"
+                                                class="btn">Reserve</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-100 m-3" id="item4" data-description="Description for Holly"
+                                        onclick="showBookDescription('Holly')">
+                                        <img src="imgs/holly.jpg" class="card-img-top" alt="Holly">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Holly</h5>
+                                            <div class="author">Stephen King</div>
+                                            <button id="item4-reserve-btn" onclick="reserveBook('item4',event)"
+                                                class="btn">Reserve</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="container mb-3">
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 justify-content-center">
+                                <div class="col">
+                                    <div class="card h-100 m-3" id="item5"
+                                        data-description="Description for Almond: A Novel"
+                                        onclick="showBookDescription('Almond: A Novel')">
+                                        <img src="imgs/almond.jpg" class="card-img-top" alt="Almond: A Novel">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Almond: A Novel</h5>
+                                            <div class="author">Won-pyung Sohn</div>
+                                            <button id="item5-reserve-btn" onclick="reserveBook('item5',event)"
+                                                class="btn">Reserve</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-100 m-3" id="item6" data-description="Description for Life of Pi"
+                                        onclick="showBookDescription('Life of Pi')">
+                                        <img src="imgs/life of pi.jpg" class="card-img-top" alt="Life of Pi">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Life of Pi</h5>
+                                            <div class="author">Yann Martel</div>
+                                            <button id="item6-reserve-btn" onclick="reserveBook('item6',event)"
+                                                class="btn">Reserve</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-100 m-3" id="item7"
+                                        data-description="Description for Brave New World"
+                                        onclick="showBookDescription('Brave New World')">
+                                        <img src="imgs/brave new world.jpg" class="card-img-top" alt="Brave New World">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Brave New Worlds</h5>
+                                            <div class="author">Aldous Huxley</div>
+                                            <button id="item7-reserve-btn" onclick="reserveBook('item7',event)"
+                                                class="btn">Reserve</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-100 m-3" id="item8" data-description="Description for Becoming"
+                                        onclick="showBookDescription('Becoming')">
+                                        <img src="imgs/becoming.jpg" class="card-img-top" alt="Becoming">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Becoming</h5>
+                                            <div class="author">Michelle Obama</div>
+                                            <button id="item8-reserve-btn" onclick="reserveBook('item8',event)"
+                                                class="btn">Reserve</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="container mb-3">
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 justify-content-center">
+                                <div class="col">
+                                    <div class="card h-100 m-3" id="item9" data-description="Description for Ikigai"
+                                        onclick="showBookDescription('Ikigai')">
+                                        <img src="imgs/ikigai.jpg" class="card-img-top" alt="Ikigai">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Ikigai</h5>
+                                            <div class="author">Hector Garcia</div>
+                                            <button id="item9-reserve-btn" onclick="reserveBook('item9',event)"
+                                                class="btn">Reserve</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-100 m-3" id="item10"
+                                        data-description="Description for Animal Farm"
+                                        onclick="showBookDescription('Animal Farm')">
+                                        <img src="imgs/animal farm.jpg" class="card-img-top" alt="Animal Farm">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Animal Farm</h5>
+                                            <div class="author">George Orwell</div>
+                                            <button id="item10-reserve-btn" onclick="reserveBook('item10', event)"
+                                                class="btn">Reserve</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-100 m-3" id="item11"
+                                        data-description="Description for The 12 Week Year"
+                                        onclick="showBookDescription('The 12 Week Year')">
+                                        <img src="imgs/the 12 week year.jpg" class="card-img-top"
+                                            alt="The 12 Week Year">
+                                        <div class="card-body">
+                                            <h5 class="card-title">The 12 Week Year</h5>
+                                            <div class="author">Brian P. Morgan</div>
+                                            <button id="item11-reserve-btn" onclick="reserveBook('item11',event)"
+                                                class="btn">Reserve</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card h-100 m-3" id="item12"
+                                        data-description="Description for The Hobbit"
+                                        onclick="showBookDescription('The Hobbit')">
+                                        <img src="imgs/hobbit.jpg" class="card-img-top" alt="The Hobbit">
+                                        <div class="card-body">
+                                            <h5 class="card-title">The Hobbit</h5>
+                                            <div class="author">J.R.R. Tolkien</div>
+                                            <button id="item12-reserve-btn" onclick="reserveBook('item12',event)"
+                                                class="btn">Reserve</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="section" id="stats" data-anchor="stats-page">
+            <h1>Statistics</h1>
+            <canvas id="myBarChart" height="450"></canvas>
+        </div>
+
+        <div class="section" id="inventory" data-anchor="inventory-page">
+            <h1>Inventory</h1>
+            <table id="libraryTable" class="display">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Genre</th>
+                        <th>Year</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section" data-anchor="newsletter-page">
+            <section class="newsletter">
+                <form action="">
+                    <h3>Subscribe for latest updates</h3>
+                    <input type="email" name="" placeholder="enter your email" id="" class="box">
+                    <input type="submit" value="Subscribe" class="btn">
+                </form>
+            </section>
+        
+            <footer class="footer">
+                <div class="contact-info">
+                    <h4>Contact Information</h4>
+                    <p>Email: bookifyenquiry@hotmail.com</p>
+                    <p>Phone: +65 6778 9998</p>
+                </div>
+        
+                <div class="social-media">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#" target="_blank">Facebook</a></li>
+                        <li><a href="#" target="_blank">Twitter</a></li>
+                        <li><a href="#" target="_blank">Instagram</a></li>
+                    </ul>
+                </div>
+        
+                <div class="sitemap">
+                    <h4>Site Map</h4>
+                    <ul>
+                        <li><a href="#home-page">Home</a></li>
+                        <li><a href="#library-page">Library</a></li>
+                        <li><a href="#stats-page">Statistics</a></li>
+                        <li><a href="#inventory-page">Inventory</a></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>        
+    </div>
+
+    <div class="modal" id="bookModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Book Description</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="bookDescription">
+                    <!-- description appear here through js -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <script src="https://unpkg.com/fullpage.js/dist/fullpage.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
